@@ -14,29 +14,31 @@ import '../internals/type_defs.dart';
 /// [CameraPicker] 的配置项
 /// {@endtemplate}
 class CameraPickerConfig {
-  const CameraPickerConfig({
-    this.enableRecording = false,
-    this.onlyEnableRecording = false,
-    this.enableTapRecording = false,
-    this.enableAudio = true,
-    this.enableSetExposure = true,
-    this.enableExposureControlOnPoint = true,
-    this.enablePinchToZoom = true,
-    this.enablePullToZoomInRecord = true,
-    this.shouldDeletePreviewFile = false,
-    this.shouldAutoPreviewVideo = false,
-    this.maximumRecordingDuration = const Duration(seconds: 15),
-    this.theme,
-    this.textDelegate,
-    this.cameraQuarterTurns = 0,
-    this.resolutionPreset = ResolutionPreset.max,
-    this.imageFormatGroup = ImageFormatGroup.unknown,
-    this.preferredLensDirection = CameraLensDirection.back,
-    this.lockCaptureOrientation,
-    this.foregroundBuilder,
-    this.onEntitySaving,
-    this.onError,
-  }) : assert(
+  const CameraPickerConfig(
+      {this.enableRecording = false,
+      this.onlyEnableRecording = false,
+      this.enableTapRecording = false,
+      this.enableAudio = true,
+      this.enableSetExposure = true,
+      this.enableExposureControlOnPoint = true,
+      this.enablePinchToZoom = true,
+      this.enablePullToZoomInRecord = true,
+      this.shouldDeletePreviewFile = false,
+      this.shouldAutoPreviewVideo = false,
+      this.maximumRecordingDuration = const Duration(seconds: 15),
+      this.theme,
+      this.textDelegate,
+      this.cameraQuarterTurns = 0,
+      this.resolutionPreset = ResolutionPreset.max,
+      this.imageFormatGroup = ImageFormatGroup.unknown,
+      this.preferredLensDirection = CameraLensDirection.back,
+      this.lockCaptureOrientation,
+      this.foregroundBuilder,
+      this.onEntitySaving,
+      this.onError,
+      this.shootingActionSecondary,
+      this.topActionSecondary})
+      : assert(
           enableRecording == true || onlyEnableRecording != true,
           'Recording mode error.',
         );
@@ -134,4 +136,10 @@ class CameraPickerConfig {
 
   /// {@macro wechat_camera_picker.CameraErrorHandler}
   final CameraErrorHandler? onError;
+
+  /// An alternative action to go on the shooting actions row
+  final Widget Function()? shootingActionSecondary;
+
+  /// An alternative action to go in the flash column
+  final Widget Function()? topActionSecondary;
 }

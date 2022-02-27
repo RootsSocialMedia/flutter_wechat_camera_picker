@@ -865,6 +865,10 @@ class CameraPickerState extends State<CameraPicker>
               if (cameras.length > 1) switchCamerasButton,
               const Spacer(),
               switchFlashesButton(v),
+              if (widget.pickerConfig.topActionSecondary != null)
+                const Spacer(),
+              if (widget.pickerConfig.topActionSecondary != null)
+                widget.pickerConfig.topActionSecondary!()
             ],
           ),
         );
@@ -951,7 +955,11 @@ class CameraPickerState extends State<CameraPicker>
               child: MergeSemantics(child: shootingButton(constraints)),
             ),
           ),
-          const Spacer(),
+          if (controller?.value.isRecordingVideo != true &&
+              widget.pickerConfig.shootingActionSecondary != null)
+            Expanded(child: widget.pickerConfig.shootingActionSecondary!())
+          else
+            const Spacer(),
         ],
       ),
     );

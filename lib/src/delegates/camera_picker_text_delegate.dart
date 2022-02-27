@@ -153,8 +153,22 @@ class EnglishCameraPickerTextDelegate extends CameraPickerTextDelegate {
 /// 英文文字实现（包括摄像）
 class EnglishCameraPickerTextDelegateWithRecording
     extends EnglishCameraPickerTextDelegate {
+  final String? confirmText;
+  final String? shootingTipsText;
+  final String? loadFailedText;
+
+  // ignore: sort_constructors_first
+  EnglishCameraPickerTextDelegateWithRecording(
+      {this.confirmText, this.shootingTipsText, this.loadFailedText});
+
   @override
-  String get shootingTips => 'Tap to take photo. Long press to record video.';
+  String get confirm => confirmText!;
+
+  @override
+  String get shootingTips => shootingTipsText!;
+
+  @override
+  String get loadFailed => loadFailedText!;
 }
 
 /// Default text delegate including only recording implements with English.
